@@ -49,6 +49,12 @@ namespace
 
   double area(double r, size_t threads, size_t tests)
   {
+    if (threads == 0 || tests == 0)
+    {
+      std::cerr << "Invalid argument" << '\n';
+      return -1.0;
+    }
+
     size_t chunk = tests / threads;
     size_t remainder = tests % threads;
 
@@ -104,7 +110,7 @@ namespace
 int main()
 {
   double r = 5.0;
-  size_t threads = 16;
+  size_t threads = 0;
   size_t tests = 10000000;
 
   std::cout << "Calculating area of circle with radius = " << r << '\n';
