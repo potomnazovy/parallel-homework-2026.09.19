@@ -103,5 +103,23 @@ namespace
 
 int main()
 {
+  double r = 5.0;
+  size_t threads = 16;
+  size_t tests = 10000000;
+
+  std::cout << "Calculating area of circle with radius = " << r << '\n';
+  std::cout << "Using " << threads << " threads and " << tests << " tests" << '\n';
+
+  double result = area(r, threads, tests);
+
+  if (result < 0)
+  {
+    std::cerr << "Error: area calculation failed" << '\n';
+    return 1;
+  }
+
+  std::cout << "Monte-Carlo area: " << result << '\n';
+  std::cout << "Simple area: " << M_PI * r * r << '\n';
+
   return 0;
 }
