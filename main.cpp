@@ -51,7 +51,7 @@ namespace
   {
     if (threads == 0 || tests == 0)
     {
-      std::cerr << "Invalid argument" << '\n';
+      std::cerr << "Error: threads and tests must be > 0" << '\n';
       return -1.0;
     }
 
@@ -110,7 +110,7 @@ namespace
 int main()
 {
   double r = 5.0;
-  size_t threads = 0;
+  size_t threads = 16;
   size_t tests = 10000000;
 
   std::cout << "Calculating area of circle with radius = " << r << '\n';
@@ -126,6 +126,10 @@ int main()
 
   std::cout << "Monte-Carlo area: " << result << '\n';
   std::cout << "Simple area: " << M_PI * r * r << '\n';
+
+  std::cout << "\n--- Test zero cases ---\n";
+  std::cout << "Testing with 0 threads: " << area(5.0, 0, 1000) << '\n';
+  std::cout << "Testing with 0 tests: " << area(5.0, 4, 0) << '\n';
 
   return 0;
 }
